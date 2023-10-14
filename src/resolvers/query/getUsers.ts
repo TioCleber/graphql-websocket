@@ -1,4 +1,4 @@
-import { users } from '../../server/graphqlServer'
+import { users } from '../../app'
 import { Context } from '../../typings/context'
 
 export const getUsers = (__: unknown, _: any, ctx: Context) => {

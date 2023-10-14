@@ -4,10 +4,7 @@ import { makeExecutableSchema } from '@graphql-tools/schema'
 import { typeDefs } from './../config/typeDefs'
 
 import { IApolloServerConfig } from '../typings/graphqlServer'
-import { User } from '../typings/user'
 import { resolvers } from '../resolvers'
-
-export const users: User[] = []
 
 export class GraphQLServer {
   schemaConfig() {

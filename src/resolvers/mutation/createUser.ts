@@ -1,7 +1,7 @@
 import { randomUUID } from 'crypto'
 import { Context } from '../../typings/context'
 import { User } from '../../typings/user'
-import { users } from '../../server/graphqlServer'
+import { users } from '../../app'
 
 export const createUser = (_: unknown, args: User, ctx: Context) => {
   const id = randomUUID()
