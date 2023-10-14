@@ -3,15 +3,22 @@ type User {
   name: String!
 }
 
+type Commentary {
+  id: String!
+  message: String!
+  userName: String!
+}
+
 type Query {
   getUsers: [User]
 }
 
 type Mutation {
   createUser(name: String!): User!
-  room(userName: String!): [User]
+  chat(userName: String!, message: String!): Commentary!
 }
 
 type Subscription {
   user: User!
+  commentary: Commentary!
 }

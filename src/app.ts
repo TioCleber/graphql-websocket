@@ -63,7 +63,9 @@ class App {
 
     this.app.use(
       path,
-      cors<cors.CorsRequest>(),
+      cors<cors.CorsRequest>({
+        origin: (_o, c) => c(null, true),
+      }),
       bodyParser.json(),
       expressMiddleware(server, {
         context: async () => {
