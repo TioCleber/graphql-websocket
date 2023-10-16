@@ -1,23 +1,5 @@
-import { getUsers } from './query/getUsers'
-import { createUser } from './mutation/createUser'
-import { userInRoom } from './subscription/userInRoom'
-import { chat } from './mutation/chat'
-import { commentary } from './subscription/commentary'
+import MessageResolver from './message-resolver/messageResolver'
 
-export const resolvers = {
-  Query: {
-    getUsers,
-  },
-  Mutation: {
-    createUser,
-    chat,
-  },
-  Subscription: {
-    user: {
-      subscribe: userInRoom,
-    },
-    commentary: {
-      subscribe: commentary,
-    },
-  },
-}
+import { NonEmptyArray } from 'type-graphql'
+
+export const resolvers: NonEmptyArray<Function> = [MessageResolver]

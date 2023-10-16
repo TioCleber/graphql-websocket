@@ -1,14 +1,17 @@
 import { ApolloServer, ApolloServerPlugin } from '@apollo/server'
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
-import { makeExecutableSchema } from '@graphql-tools/schema'
-import { typeDefs } from './../config/typeDefs'
 
 import { IApolloServerConfig } from '../typings/graphqlServer'
 import { resolvers } from '../resolvers'
+import { buildSchema } from 'type-graphql'
+import path from 'path'
 
 export class GraphQLServer {
   schemaConfig() {
-    const schema = makeExecutableSchema({ typeDefs, resolvers })
+    const schema = buildSchema({
+      resolvers,
+      emitSchemaFile: path.resolve(__dirname, './../graphql', 'schema.gql'),
+    })
 
     return schema
   }

@@ -5,7 +5,7 @@ export class ContextServer {
   contextConfig() {
     const pubsub = new PubSub()
 
-    const context: Context = { pubsub }
+    const context: Context = {}
 
     return context
   }

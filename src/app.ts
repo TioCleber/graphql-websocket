@@ -1,3 +1,5 @@
+import 'reflect-metadata'
+
 import express, { Express } from 'express'
 import { createServer, Server } from 'http'
 import { expressMiddleware } from '@apollo/server/express4'
@@ -9,9 +11,9 @@ import { GraphQLServer } from './server/graphqlServer'
 import { WsSever } from './server/wsServer'
 
 import { IExpressMiddlewares } from './typings/app'
-import { User } from './typings/user'
+import { Message } from './models/Message'
 
-export const users: User[] = []
+export const messages: Message[] = []
 
 class App {
   private app: Express
@@ -26,12 +28,12 @@ class App {
     this.start(this.httpServer, this.path)
   }
 
-  start(httpServer: Server, path: string) {
+  async start(httpServer: Server, path: string) {
     const contextServer = new ContextServer()
     const graphqlServer = new GraphQLServer()
     const wsServer = new WsSever()
 
-    const schema = graphqlServer.schemaConfig()
+    const schema = await graphqlServer.schemaConfig()
     const context = contextServer.contextConfig()
 
     const wsServerConfig = wsServer.wsServerConfig(httpServer, path)

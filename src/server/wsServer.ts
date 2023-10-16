@@ -18,6 +18,12 @@ export class WsSever {
         context: async () => {
           return context
         },
+        onConnect: (ctx) => {
+          console.log('conectado ')
+        },
+        onDisconnect: (ctx) => {
+          console.log('desconectado ')
+        },
       },
       wsServerConfig
     )
