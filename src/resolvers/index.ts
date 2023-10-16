@@ -1,23 +1,17 @@
-import { getUsers } from './query/getUsers'
-import { createUser } from './mutation/createUser'
-import { userInRoom } from './subscription/userInRoom'
-import { chat } from './mutation/chat'
-import { commentary } from './subscription/commentary'
+import { userMessage } from './mutation/userMessage'
+import { userMessageSubscription } from './subscription/userMessageSubscription'
+import { getMessages } from './query/getMessages'
 
 export const resolvers = {
   Query: {
-    getUsers,
+    getMessages,
   },
   Mutation: {
-    createUser,
-    chat,
+    userMessage,
   },
   Subscription: {
-    user: {
-      subscribe: userInRoom,
-    },
-    commentary: {
-      subscribe: commentary,
+    userMessageSubscription: {
+      subscribe: userMessageSubscription,
     },
   },
 }

@@ -9,9 +9,9 @@ import { GraphQLServer } from './server/graphqlServer'
 import { WsSever } from './server/wsServer'
 
 import { IExpressMiddlewares } from './typings/app'
-import { User } from './typings/user'
+import { Message } from './models/Message'
 
-export const users: User[] = []
+export const messages: Message[] = []
 
 class App {
   private app: Express
